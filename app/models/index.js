@@ -1,10 +1,10 @@
-const dbConfig = require("../config/db.config.js");
+const dbConfig = require("../config/db.config");
 
 const Sequelize = require("sequelize");
+
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
-  operatorsAliases: false,
 
   pool: {
     max: dbConfig.pool.max,
@@ -19,6 +19,9 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.responsedb = require("./app.db.js")(sequelize, Sequelize);
+db.PanicRequest = require("./panic_request.model.js")(sequelize, Sequelize);
+db.Requester = require("./requester.model.js")(sequelize, Sequelize);
+db.Responder = require("./responder.model.js")(sequelize, Sequelize);
+db.Response = require("./response.model.js")(sequelize, Sequelize);
 
 module.exports = db;

@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./app/models");
 const app = express();
+require("./app/routes/panic_request.routes")(app);
 
 var corsOptions = {
   origin: "http://localhost:8081"
