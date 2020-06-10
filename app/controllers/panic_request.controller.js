@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 // create and save a new panic request
 exports.create = (req, res) => {
   // validate request
-  if (!req.body.requester_id || !req.body.geolat || !req.body.geolong ) {
+  if (!req.query.requester_id || !req.query.geolat || !req.query.geolong ) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -17,9 +17,9 @@ exports.create = (req, res) => {
   // create a panic request
   const panic_request = {
     panic_id: uuidv4(),
-    geolat: req.body.geolong,
-    geolong: req.body.geolat,
-    requester_id: req.body.requester_id,
+    geolat: req.query.geolong,
+    geolong: req.query.geolat,
+    requester_id: req.query.requester_id,
     request_time: Date.now(),
     resolved_time:null,
     response_id: null
