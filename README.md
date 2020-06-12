@@ -1,7 +1,7 @@
 # response-api
  api for storing response information
 
-# Dependencies
+## Dependencies
  
 Make sure nodeJS, NPM and PostgresSQL are installed on your computer.
 
